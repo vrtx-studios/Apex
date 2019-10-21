@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Apex 2.0\n"
+"POT-Creation-Date: 2019-10-11 12:20+0200\n"
+"PO-Revision-Date: 2019-10-11 12:23+0200\n"
+"Last-Translator: \n"
+"Language-Team: VrtxStudios (Dronki)\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Core/Router/clRouterDao.php:23
+msgid "ID"
+msgstr "ID"
+
+#: Core/Router/clRouterDao.php:27
+msgid "Path"
+msgstr "Sökväg"
+
+#: Core/Router/clRouterDao.php:31
+msgid "Language-ID"
+msgstr "Språk-ID"
+
+#: Core/Router/clRouterDao.php:35
+msgid "Layout-key"
+msgstr "Layoutnyckel"
+
+#: Core/Router/clRouterDao.php:39
+msgid "Created"
+msgstr "Skapad"
+
+#: Core/Router/clRouterDao.php:43 Core/bootstrap.php:25
+msgid "Updated"
+msgstr "Uppdaterad"

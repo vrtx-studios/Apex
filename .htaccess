@@ -1,0 +1,46 @@
+
+AddDefaultCharset utf-8
+
+# Force UTF-8 for certain file formats. ----------------------------------------
+<IfModule mod_mime.c>
+    AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
+</IfModule>
+
+Options -MultiViews
+
+# Disabled directory indexes/listings ------------------------------------------
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+
+# Abstraction ------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine On
+	RewriteBase /
+
+	RewriteCond %{HTTPS} !off
+	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+	##
+	# Rewrite www.example.com -> example.com
+	##
+	RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+	RewriteRule ^(.+)$ index.php/$1 [NC,L]
+
+	##
+	# Rewrite example.com -> www.example.com
+	##
+	#RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+	#RewriteCond %{HTTP_HOST} !=localhost [NC]
+	#RewriteCond %{HTTP_HOST} !=127.0.0.1
+	#RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+	RewriteCond %{REQUEST_FILENAME} -s [OR]
+	RewriteCond %{REQUEST_FILENAME} -l [OR]
+	RewriteCond %{REQUEST_FILENAME} -d [OR]
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^.*$ - [NC,L]
+	RewriteRule ^(.*)$ index.php [NC,L]
+</IfModule>
