@@ -13,6 +13,27 @@ abstract class clModuleBase {
     public $sModuleName;
     public $sModulePrefix;
     
+    public $sLocaleDomain = "",
+            $sLocalePath = "";
+    
+    public function install() {
+        $bTableExists = false;
+        $sQuery = "SELECT * 
+        FROM information_schema.tables
+        WHERE table_schema = '" . DB_NAME . "' 
+            AND table_name = '" . $this->oDb->sPrimaryEntity ."'
+        LIMIT 1;";
+        $mQuery = $this->oDb->oDao->prepare( $sQuery );
+        $mQuery->execute();
+        if( empty($mQuery->fetch()) ) {
+            // Install the table into the database.
+            require_once(PATH_FUNCTIONS . 'fDevelopment.php');
+            $sTableSql = datadict2sql($this->oDb->aDataDict);
+            $mInstall = $this->oDb->oDao->prepare( $sTableSql );
+            $mInstall->execute();
+        }
+    }
+    
     protected function initBase() {
         if( empty($this->sModuleName) ) $this->sModuleName = ucfirst( $this->sModulePrefix );
     }

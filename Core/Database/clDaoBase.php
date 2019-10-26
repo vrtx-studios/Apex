@@ -51,6 +51,10 @@ abstract class clDaoBase {
         return $aData;
     }
     
+    public function getEntity() {
+        return $this->sPrimaryEntity;
+    }
+    
     public function connect() {
         if( $this->bConnected === false ) {
             try {

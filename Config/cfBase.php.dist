@@ -3,20 +3,18 @@
 define( 'SITE_TITLE', 'Apex2.0' );
 
 // Database details
-define( 'DB_ENGINE', 'mysql' ); // postgresql, sqlite, mysql
-define( 'DB_PATH', NULL ); // Only used if using sqlite
-define( 'DB_PORT', '3306' );
-define( 'DB_HOST', 'localhost' );
-define( 'DB_USER', 'dronki_usr' );
-define( 'DB_PASS', 'wOehTYsnk4npp0Xe' );
-define( 'DB_NAME', 'dronki_db' );
+define( 'DB_ENGINE', '[DB_ENGINE]' ); // postgresql, sqlite, mysql
+define( 'DB_PATH', [DB_PATH] ); // Only used if using sqlite
+define( 'DB_PORT', '[DB_PORT]' );
+define( 'DB_HOST', '[DB_HOST]' );
+define( 'DB_USER', '[DB_USER]' );
+define( 'DB_PASS', '[DB_PASS]' );
+define( 'DB_NAME', '[DB_NAME]' );
 
 define( 'PATH_ROOT', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . '..' );
-define( 'PATH_PUBLIC', PATH_ROOT . DIRECTORY_SEPARATOR . 'public_html' . DIRECTORY_SEPARATOR );
 define( 'PATH_FUNCTIONS', PATH_ROOT . DIRECTORY_SEPARATOR . 'Functions' . DIRECTORY_SEPARATOR );
 define( 'PATH_LOCALE', PATH_ROOT . DIRECTORY_SEPARATOR . 'Locale' );
 define( 'PATH_LOG', PATH_ROOT . DIRECTORY_SEPARATOR . "Logs" . DIRECTORY_SEPARATOR );
-define( 'PATH_MODULE', PATH_ROOT . DIRECTORY_SEPARATOR . "Modules" . DIRECTORY_SEPARATOR );
 define( 'PATH_TEMPLATE' , PATH_ROOT . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR );
 
 // Localization

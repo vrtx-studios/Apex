@@ -1,5 +1,4 @@
 <?php
-
 namespace Core\Router;
 
 use Core\Module\clModuleBase as moduleBase;
