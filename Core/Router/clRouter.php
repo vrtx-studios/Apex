@@ -8,7 +8,7 @@ use Core\Module\clModuleBase as moduleBase;
  *
  * @author Dronki
  */
-class clRouter extends moduleBase{
+class clRouter extends moduleBase {
     
     public $sPath;
     

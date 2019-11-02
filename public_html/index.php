@@ -1,7 +1,7 @@
 <?php
 
-require_once "Config\cfBase.php";
-require_once "Core\clAutoloader.php";
+require_once "../Config/cfBase.php";
+require_once "../Core/clAutoloader.php";
 
 // init the benchmark if environment is development and benchmark is set to true.
 
@@ -23,7 +23,8 @@ date_default_timezone_set( DEFAULT_TIMEZONE );
 //global $oAutoloader;
 $oAutoloader = new Core\clAutoloader();
 $oAutoloader->register();
-$oAutoloader->addNamespace("Core", "Core");
+$oAutoloader->addNamespace("Core", "../Core");
+$oAutoloader->addNamespace("Modules", "../Modules");
 
 global $oRegistry;
 $oRegistry = new Core\clRegistry();
@@ -32,4 +33,3 @@ $oRegistry::set( 'clAutoloader', $oAutoloader );
 // Init bootstrap
 $oApplication = new Core\bootstrap();
 $oApplication->execute();
-

@@ -1,0 +1,12 @@
+// Flat buttons
+$buttonBackgroundColor: transparent !default; // Background-color (color)
+$buttonRippleColor: #cccccc !default;
+$buttonFontColor: #000 !default; // Font-color (color)
+$buttonHoverColor: #f2f2f2 !default; // Hover-color (color)
+$buttonBorderRadius: 2px !default; // Border-radius (integer)
+$buttonBoxShadow: false !default; // Display box-shadow ( "true", "false" )
+
+// Forms
+$formFontColor: rgba(0,0,0,0.87) !default; // Font-color (color)
+$formFontSize: 16px;
+$formBorderColor: rgba(0,0,0,0.87) !default; // Border-color (color)

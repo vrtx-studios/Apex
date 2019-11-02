@@ -1,0 +1,13 @@
+@import "vars";
+@import "apex/apex";
+
+/*@import "animate/animate";*/
+
+body {
+    background: $buttonRippleColor;
+    /*@include fadeInDown();*/
+    @include maxScreen( 768px ) {
+        background: #fff;
+    }
+}
+

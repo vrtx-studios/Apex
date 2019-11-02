@@ -1,0 +1,13 @@
+@mixin flex-display {
+	display: flex;
+  	align-items: center;
+	justify-content: center;
+}
+@mixin clearfix {
+	&::before,
+	&::after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
