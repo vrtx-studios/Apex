@@ -24,7 +24,36 @@ class clLocale extends moduleBase {
     public function init() {
         $this->setLocale( $_SESSION['locale'] );
     }
-
+    
+    public function installLocale( $sDomain, $sLocalePath, $bAutoload = 'yes' ) {
+        if( strlen($sDomain) <= 0 || strlen($sLocalePath) <= 0 ) return false;
+        return parent::create( array(
+            'localeDomain',
+            'localePath',
+            'localeAutoload',
+            'localeCreated'
+        ), array(
+            'localeDomain' => $this->oDb->escapeStr( $sDomain ),
+            'localePath' => $this->oDb->escapeStr( $sLocalePath ),
+            'localeAutoload' => ( $bAutoload == 'yes' ? $this->oDb->escapeStr('yes') : $this->oDb->escapeStr('no') ) ,
+            'localeCreated' => date( 'Y-m-d H:i:s' )
+        ) );
+    }
+    
+    public function generateAutoloader() {
+        $sSavePath = PATH_CACHE . 'autoload/cacheLocaleLoader.php';
+        $aLines = array();
+        $aLines[] = '<?php';
+        $aLines[] = '// File generated @ ' . date( 'Y-m-d H:i:s' );
+        $aLocales = parent::read();
+        foreach( $aLocales as $aEntry ) {
+            if( $aEntry['localeAutoload'] == 'yes' ) {
+                $aLines[] = '$this->oLocale->addLocale( "' . $aEntry['localeDomain'] . '", "' . $aEntry['localePath'] . '" );';
+            }
+        }
+        file_put_contents($sSavePath, implode("\n", $aLines) );
+    }
+    
     public function addLocale( $sDomain, $sLocalePath ) {
         if( strlen($sDomain) <= 0 || strlen($sLocalePath) <= 0 ) return false;
         $this->aLocales[$sDomain] = $sLocalePath;

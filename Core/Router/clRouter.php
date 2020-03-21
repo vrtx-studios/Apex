@@ -62,4 +62,8 @@ class clRouter extends moduleBase {
         return '/' . trim( $sPath, '/' );
     }
     
+    public function readObjectByRoute( $sRoute = "", $sParent = "" ) {
+        return $this->oDb->readObjectByRoute( $sRoute, $sParent );
+    }
+    
 }

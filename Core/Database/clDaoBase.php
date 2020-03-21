@@ -101,13 +101,16 @@ abstract class clDaoBase {
     }
     
     public function beginTransaction() {
-        return $this->oDao->beginTransaction();
+        $this->sQuery( "START TRANSACTION;" );
+        $this->sQuery->execute();
     }
     public function endTransaction() {
-        return $this->oDao->commit();
+        $this->sQuery( "COMMIT;" );
+        $this->sQuery->execute();
     }
     public function cancelTransaction() {
-        return $this->oDao->rollBack();
+        $this->sQuery( "ROLLBACK;" );
+        $this->sQuery->execute();
     }
     
     public function setFetchType( $mType ) {
@@ -116,11 +119,9 @@ abstract class clDaoBase {
     
     public function select( $aParams = null, $mEntity = '*' ) {
         $sQuery = $this->prepareNamedParams( $aParams );
-        echo '<pre>' . var_dump( $sQuery ) . '</pre>';
         if( $sQuery ) {
             $sSql = ( 'SELECT ' . $mEntity . ' FROM ' . $this->sPrimaryEntity . ' WHERE ' . $sQuery );
             $this->sQuery = $this->oDao->prepare( $sSql );
-            echo '<pre>' . var_dump( $this->sQuery ) . '</pre>';
             foreach( $aParams as $sName => $mValue ) {
                 $this->prepareBind( $sName, $mValue );
             }
@@ -141,9 +142,11 @@ abstract class clDaoBase {
         $this->sQuery = $this->oDao->prepare( $sSql );
         
         foreach( $aValues as $sParam => $mValue ) {
+            var_dump( $sParam, $mValue );
             $this->prepareBind($sParam, $mValue);
         }
         $this->sQuery->execute();
+        return $this->sQuery->rowCount();
     }
     
     public function update( $aValues = array(), $aParams = array() ) {
@@ -151,6 +154,7 @@ abstract class clDaoBase {
         $sWhere = $this->prepareNamedParams($aParams);
         
         $sSql = ('UPDATE ' . $this->sPrimaryEntity . ' SET ' . $sParams . ' WHERE ' . $sWhere);
+        $sSql = str_replace( "AND" , ",", $sSql );
         $this->sQuery = $this->oDao->prepare( $sSql );
         
         foreach( $aParams as $sName => $mValue ) {
@@ -162,6 +166,7 @@ abstract class clDaoBase {
         }
         
         $this->sQuery->execute();
+        return $this->sQuery->rowCount();
     }
     
     public function delete( $aParams = array() ) {
@@ -174,6 +179,7 @@ abstract class clDaoBase {
             $this->prepareBind($sName, $mValue);
         }
         $this->sQuery->execute();
+        return $this->sQuery->rowCount();
     }
     
     public function fetchAll() {

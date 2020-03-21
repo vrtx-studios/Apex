@@ -39,19 +39,16 @@ abstract class clModuleBase {
     }
     
     public function create( $aColumns = array(), $aValues = array() ) {
-        $this->oDb->insert( $aColumns, $aValues );
-        return $this->oDb->fetchRow();
+        return $this->oDb->insert( $aColumns, $aValues );
     }
     public function read( $aParams = array() ) {
         $this->oDb->select( $aParams );
         return $this->oDb->fetchAll();
     }
     public function update( $aValues = array(), $aParams = array() ) {
-        $this->oDb->update( $aValues, $aParams );
-        return $this->oDb->fetchRow();
+        return $this->oDb->update( $aValues, $aParams );
     }
     public function delete( $aParams = array() ) {
-        $this->oDb->delete( $aParams );
-        return $this->oDb->fetchRow();
+        return $this->oDb->delete( $aParams );
     }
 }

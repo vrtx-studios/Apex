@@ -42,6 +42,20 @@ class clRouterDao extends db\clDaoBase {
                     'type' => 'datetime',
                     'title' => _( 'Updated' )
                 )
+            ),
+            'entRouteToObject' => array(
+                'routeId' => array(
+                    'type' => 'integer',
+                    'title' => _( 'Route-ID' )
+                ),
+                'objectParent' => array(
+                    'type' => 'string',
+                    'title' => _( 'Parent-object')
+                ),
+                'objectId' => array(
+                    'type' => 'integer',
+                    'title' => _( 'Object-ID' )
+                )
             )
         );
         
@@ -49,7 +63,14 @@ class clRouterDao extends db\clDaoBase {
         $this->sPrimaryField = '*';
         
         $this->init();
-        
+    }
+    
+    public function readObjectByRoute( $sRoute = "", $sParent = "" ) {
+        $sQuery = "SELECT objectId FROM `entRouteToObject` o LEFT JOIN `entRoute` r ON o.routeId = r.routeId WHERE r.routePath=" . $this->oDao->escapeStr( $sRoute ) . " AND o.objectParent=" . $this->oDao->escapeStr( $sParent );
+        $oQuery = $this->oDao->prepare( $sQuery );
+        $oQuery->execute();
+        $aResult = $oQuery->fetchAll(\PDO::FETCH_ASSOC);
+        return $aResult;
     }
     
 }

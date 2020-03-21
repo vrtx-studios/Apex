@@ -12,17 +12,13 @@ define( 'DB_PASS', '[DB_PASS]' );
 define( 'DB_NAME', '[DB_NAME]' );
 
 define( 'PATH_ROOT', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . '..' );
-define( 'PATH_CACHE', PATH_ROOT . DIRECTORY_SEPARATOR . 'Cache' . DIRECTORY_SEPARATOR );
-define( 'PATH_PUBLIC', PATH_ROOT . DIRECTORY_SEPARATOR . 'public_html' . DIRECTORY_SEPARATOR );
 define( 'PATH_FUNCTIONS', PATH_ROOT . DIRECTORY_SEPARATOR . 'Functions' . DIRECTORY_SEPARATOR );
 define( 'PATH_LOCALE', PATH_ROOT . DIRECTORY_SEPARATOR . 'Locale' );
 define( 'PATH_LOG', PATH_ROOT . DIRECTORY_SEPARATOR . "Logs" . DIRECTORY_SEPARATOR );
-define( 'PATH_MODULE', PATH_ROOT . DIRECTORY_SEPARATOR . "Modules" . DIRECTORY_SEPARATOR );
 define( 'PATH_TEMPLATE' , PATH_ROOT . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR );
 
 define( 'CACHE_CSS_TIME', 86400 );
 define( 'COMPRESS_CSS', true );
-
 // Localization
 define( 'DEFAULT_TIMEZONE', 'Europe/Stockholm' );
 // Dynamic Localization

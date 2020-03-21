@@ -26,6 +26,14 @@ class clLocaleDao extends db\clDaoBase {
                     'type' => 'string',
                     'title' => _( 'Path' )
                 ),
+                'localeAutoload' => array(
+                    'type' => 'array',
+                    'title' => _( 'Autoload' ),
+                    'values' => array(
+                        'no' => _( 'No' ),
+                        'yes' => _( 'Yes' )
+                    )
+                ),
                 'localeCreated' => array(
                     'type' => 'datetime',
                     'title' => _( 'Created' )
